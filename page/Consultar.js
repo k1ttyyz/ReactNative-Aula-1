@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, SafeAreaView, Card } from "react-native";
 
 
 export default function Consultar() {
@@ -8,7 +8,7 @@ const [bil,setbil] = useState([]);
 useEffect(() => {
     const buscar = async () => {
         const lista = await bil.findAll();
-        setArtistas(lista);
+        setbil(lista);
     }
     buscar();
 }, [])
