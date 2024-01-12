@@ -3,49 +3,28 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default function Consultar() {
 
-    const lista = [
-        {
-        nomelinda:"Everthing i wanted",
-        valor: 10
-},
-{
-nomelinda:"Happier Than ever",
-valor: 10
-},
-    {
-    nomelinda:"No time do die",
-    valor: 9.5
-},
-{
-nomelinda:"i love u",
-valor: 10
-},
-];
-    return (
-        <View style={styles.container}>
-                <Text>
-               Avaliando Musicas da billie
-            </Text>
-            {lista?.map((billieeilish)=>
-             <View style={styles.textinho}>
+const [bil,setbil] = useState([]);
 
-                <Text>
-                    {billieeilish.nomelinda}
-               </Text>
-               <Text>
+useEffect(() => {
+    const buscar = async () => {
+        const lista = await bil.findAll();
+        setArtistas(lista);
+    }
+    buscar();
+}, [])
 
-                Nota:    {billieeilish.valor}
-               </Text>
-               </View>
-
-            )}
-        
-        </View>
-        
-    );
-
-
+return (
+<SafeAreaView style={styles.container}>
+    { bil?.map((musical)=> (
+        <Card key={musical.id}>
+            <Text style={styles.paragraph}>{musical.nomemusica}</Text>
+            <Text style={styles.paragraph}>{musical.nota}</Text>
+        </Card>
+    ))}
+</SafeAreaView>
+);
 }
+
 
 const styles = StyleSheet.create({
     container: {

@@ -8,11 +8,11 @@ import { Button } from "react-native-paper";
 export default function Cadastrar() {
 
     const [billiezinha, setbilliezinha] = useState({
-nomeBil:"billie stan",
-valor: 10
+nomemusica:"",
+nota: ""
     })
 
-    const cadastrar = () => {
+    const botaosalvar = () => {
         Billie.create(billiezinha);
     }
 
@@ -21,20 +21,20 @@ valor: 10
         <SafeAreaView style={styles.container}>
            <Card.container>
             <TextInput
-             value={billiezinha.nomeBil} 
+             label="Nome da musica"
              onChangeText={(texto) => {
                 setbilliezinha(
-                    {...billiezinha, nomeBil: texto}
+                    {...billiezinha, nomemusica: texto}
                 )
             }}/>
                 <TextInput
-             value={billiezinha.nomeBil} 
+            label="Nota da musica"
              onChangeText={(texto) => {
                 setbilliezinha(
-                    {...billiezinha, valor: texto}
+                    {...billiezinha, nota: texto}
                 )
             }}/>
-            <Button title='Cadastrar' onPress={cadastrar}>Cadastrar</Button>
+            <Button title='Cadastrar' onPress={botaosalvar}>Cadastrar</Button>
            </Card.container>
         </SafeAreaView>
 
